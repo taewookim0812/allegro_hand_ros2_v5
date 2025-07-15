@@ -2,6 +2,9 @@
 <img src="https://github.com/user-attachments/assets/b198accd-5de4-4cfc-a347-05899c0391b3" width="400" align="left">
 <img src="https://github.com/user-attachments/assets/48640d7e-a8db-4758-9770-bcc1b3e68434" width="400" align="center">
 
+This repository is a revision of work by twkim0812.
+For inquiries, contact: twkim0812@etri.re.kr.
+
 # Allegro Hand V5 ROS2
 > [!IMPORTANT]</br>
 > **Date : 25/07/10**</br>
