@@ -50,6 +50,7 @@
 #include "candrv/candrv.h"
 #include "allegro_hand_driver/AllegroHandDrv.h"
 #include "unistd.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -329,8 +330,15 @@ void AllegroHandDrv::_parseMessage(int id, int len, unsigned char* data)
             float alpha = 0.25;
             for (int i = 0; i < 4; i++)
             {
-                if ((fingertip_sensor[i] < 0) || (fingertip_sensor[i] > 5000))
+                // if ((fingertip_sensor[i] < 0) || (fingertip_sensor[i] > 5000)) // original code
+
+                // modified by twkim
+                if (fingertip_sensor[i] < 0)
                         fingertip_sensor[i] = 0;
+                
+                int max_sensor_val = 5000;
+                if (fingertip_sensor[i] > max_sensor_val)
+                        fingertip_sensor[i] = std::min(max_sensor_val, fingertip_sensor[i]);
 
                 fingertip_sensor[i] = alpha * fingertip_sensor[i] + (1 - alpha) * fingertip_sensor_pre[i];
                 fingertip_sensor_pre[i] = fingertip_sensor[i];
