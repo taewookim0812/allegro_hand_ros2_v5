@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="allegro_ur3_system">
+
+  <!-- =================================== -->
+  <!-- Include external subsystem macros -->
+  <!-- =================================== -->
+
+  <!-- UR3 base -->
+  <xacro:include filename="$(find allegro_v5_ur3_description)/urdf/ur.urdf.xacro"/>
+
+  <!-- Allegro Hand (right, geared B) -->
+  <xacro:include filename="$(find allegro_hand_v5_description)/urdf/allegro_hand_description_right_B.urdf.xacro"/>
+
+  <!-- =============================== -->
+  <!-- Adaptor Mesh Between UR3 & Hand -->
+  <!-- =============================== -->
+
+  <link name="adapter_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://allegro_v5_ur3_description/meshes/adapter/visual/allegro_v5_ur3_adapter.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin xyz="0 0 -0.0155" rpy="0 0 0"/>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://allegro_v5_ur3_description/meshes/adapter/collision/allegro_v5_ur3_adapter.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin xyz="0 0 -0.0155" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 -0.0155" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="tool0_to_adaptor" type="fixed">
+    <parent link="tool0"/>
+    <child link="adapter_link"/>
+    <origin xyz="0 0 0.015" rpy="0 0 0"/> <!-- Adjust based on your adaptor design -->
+  </joint>
+
+  <!-- Intermediate link for hand rotation -->
+  <link name="hand_rotator"/>
+
+  <joint name="rotate_hand" type="fixed">
+    <parent link="adapter_link"/>
+    <child link="hand_rotator"/>
+    <origin xyz="0 0 0" rpy="0 0 0.7854"/>
+  </joint>
+
+
+  <!-- =================================== -->
+  <!-- Attach Allegro Hand to Adaptor -->
+  <!-- =================================== -->
+
+  <xacro:allegro_hand_right parent="hand_rotator"/>
+
+</robot>
+

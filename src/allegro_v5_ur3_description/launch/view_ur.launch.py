@@ -74,7 +74,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "description_file",
             default_value=PathJoinSubstitution(
-                [FindPackageShare("ur_description"), "urdf", "ur.urdf.xacro"]
+                [FindPackageShare("allegro_v5_ur3_description"), "urdf", "combined_robot.urdf.xacro"]
             ),
             description="URDF/XACRO description file (absolute path) with the robot.",
         )
@@ -83,7 +83,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "rviz_config_file",
             default_value=PathJoinSubstitution(
-                [FindPackageShare("ur_description"), "rviz", "view_robot.rviz"]
+                [FindPackageShare("allegro_v5_ur3_description"), "rviz", "view_robot.rviz"]
             ),
             description="RViz config file (absolute path) to use when launching rviz.",
         )

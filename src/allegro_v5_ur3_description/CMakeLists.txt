@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(ur_description)
+project(allegro_v5_ur3_description)
 
 find_package(ament_cmake REQUIRED)
 
