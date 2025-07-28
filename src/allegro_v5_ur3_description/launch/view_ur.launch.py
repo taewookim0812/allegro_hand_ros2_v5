@@ -36,6 +36,59 @@ from launch_ros.substitutions import FindPackageShare
 from launch_ros.parameter_descriptions import ParameterValue
 
 
+import os
+from launch.actions import OpaqueFunction
+
+def log_robot_description(context, *args, **kwargs):
+        # Resolve path to xacro file
+    description_file_path = LaunchConfiguration("description_file").perform(context)
+    description_dir = os.path.dirname(description_file_path)
+    
+    # Evaluate the full xacro command
+    resolved_command = Command(
+        [
+            PathJoinSubstitution([FindExecutable(name="xacro")]),
+            " ",
+            description_file_path,
+            " ",
+            "safety_limits:=",
+            LaunchConfiguration("safety_limits"),
+            " ",
+            "safety_pos_margin:=",
+            LaunchConfiguration("safety_pos_margin"),
+            " ",
+            "safety_k_position:=",
+            LaunchConfiguration("safety_k_position"),
+            " ",
+            "name:=",
+            "ur",
+            " ",
+            "ur_type:=",
+            LaunchConfiguration("ur_type"),
+            " ",
+            "tf_prefix:=",
+            LaunchConfiguration("tf_prefix"),
+        ]
+    ).perform(context)
+    
+    # Default parameter values: 
+    # ==========================
+    # safety_limits: true
+    # safety_pos_margin: 0.15
+    # safety_k_position: 20
+    # ur_type: ur3
+    # tf_prefix: ""
+
+   
+    # Save the URDF to the same directory
+    #output_path = os.path.join(description_dir, "generated_robot.urdf")
+    #with open(output_path, "w") as f:
+    #    f.write(resolved_command)
+    #print(f"Saved URDF to: {output_path}")
+    
+    return []
+
+
 def generate_launch_description():
     declared_arguments = []
     # UR specific arguments
@@ -132,6 +185,9 @@ def generate_launch_description():
             tf_prefix,
         ]
     )
+
+    log_action = OpaqueFunction(function=log_robot_description)
+    
     robot_description = {
         "robot_description": ParameterValue(value=robot_description_content, value_type=str)
     }
@@ -160,4 +216,4 @@ def generate_launch_description():
         rviz_node,
     ]
 
-    return LaunchDescription(declared_arguments + nodes_to_start)
+    return LaunchDescription(declared_arguments + nodes_to_start + [log_action])

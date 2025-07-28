@@ -4,11 +4,11 @@ mesh_files:
   base:
     visual:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/visual/base.dae
     collision:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/collision/base.stl
     mesh_offset:
       x: 0.0
@@ -21,11 +21,11 @@ mesh_files:
   shoulder:
     visual:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/visual/shoulder.dae
     collision:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/collision/shoulder.stl
     mesh_offset:
       x: 0.0
@@ -38,11 +38,11 @@ mesh_files:
   upper_arm:
     visual:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/visual/upperarm.dae
     collision:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/collision/upperarm.stl
       mesh_files:
     mesh_offset:
@@ -56,11 +56,11 @@ mesh_files:
   forearm:
     visual:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/visual/forearm.dae
     collision:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/collision/forearm.stl
     mesh_offset:
       x: 0.0
@@ -73,11 +73,11 @@ mesh_files:
   wrist_1:
     visual:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/visual/wrist1.dae
     collision:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/collision/wrist1.stl
     mesh_offset:
       x: 0.0
@@ -90,11 +90,11 @@ mesh_files:
   wrist_2:
     visual:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/visual/wrist2.dae
     collision:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/collision/wrist2.stl
     mesh_offset:
       x: 0.0
@@ -107,11 +107,11 @@ mesh_files:
   wrist_3:
     visual:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/visual/wrist3.dae
     collision:
       mesh:
-        package: ur_description
+        package: allegro_v5_ur3_description
         path: meshes/ur3e/collision/wrist3.stl
     mesh_offset:
       x: 0.0
