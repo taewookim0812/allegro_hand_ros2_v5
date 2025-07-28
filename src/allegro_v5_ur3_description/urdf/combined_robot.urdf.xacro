@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="allegro_ur3_system">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="allegro_v5_ur3">
 
   <!-- =================================== -->
   <!-- Include external subsystem macros -->
