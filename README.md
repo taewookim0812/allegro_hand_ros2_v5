@@ -12,6 +12,16 @@
 ros2 launch allegro_v5_ur3_description view_ur.launch.py ur_type:=ur3
 ```
 
+- To generate the allegro_v5_ur3.urdf file from the Xacro files, follow these steps:
+```
+cd ~/PATH-TO-YOUR-WS/src/allegro_v5_ur3_description/urdf
+chmod +x ./generate_urdf.sh
+./generate_urdf.sh
+```
+This will create the URDF file in the current directory.
+
+
+
 <img src="https://github.com/user-attachments/assets/b198accd-5de4-4cfc-a347-05899c0391b3" width="400" align="left">
 <img src="https://github.com/user-attachments/assets/48640d7e-a8db-4758-9770-bcc1b3e68434" width="400" align="center">
 
