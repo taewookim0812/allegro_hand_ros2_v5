@@ -1,0 +1,33 @@
+* Default UR3 Joint parameters for PD control:
+
+| Joint Name     | Max Force (Nm) | Damping (Nm·s/rad) | Stiffness (Nm/rad) |
+| -------------- | -------------- | ------------------ | ------------------ |
+| shoulder\_pan  | 56             | 0.01677            | 41.93743           |
+| shoulder\_lift | 56             | 0.01958            | 48.93982           |
+| elbow          | 28             | 0.09785            | 244.61501          |
+| wrist\_1       | 12             | 0.08657            | 216.43715          |
+| wrist\_2       | 12             | 0.02283            | 57.08017           |
+| wrist\_3       | 12             | 0.01832            | 45.79829           |
+	 	
+
+* Improved Parameters for Sim2Real Stability:
+
+| Joint          | Max Speed (rad/s) | Stiffness (Nm/rad) | Damping (Nm·s/rad) | Max Force (Nm) |
+| -------------- | ----------------- | ------------------ | ------------------ | -------------- |
+| shoulder\_pan  | \~3.14            | **42**             | **4.2** (`0.1×K`) | 150             |
+| shoulder\_lift | \~3.14            | **49**             | **4.9**           | 150             |
+| elbow          | \~3.14            | **245**            | **24.5**           | 100             |
+| wrist\_1       | \~6.28            | **216**            | **21.6**           | 50             |
+| wrist\_2       | \~6.28            | **57**             | **5.7**           | 50             |
+| wrist\_3       | \~6.28            | **46**             | **4.6**           | 50             |
+
+
+* Test topic:
+
+ros2 topic pub /joint_command sensor_msgs/msg/JointState "{\
+  name: ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint',\
+         'joint_0_0', 'joint_12_0', 'joint_4_0', 'joint_8_0', 'joint_1_0', 'joint_13_0', 'joint_5_0', 'joint_9_0',\
+         'joint_2_0', 'joint_14_0', 'joint_6_0', 'joint_10_0', 'joint_3_0', 'joint_15_0', 'joint_7_0', 'joint_11_0'],\
+  position: [0.5, -0.3, 0.8, -1.0, 0.2, 1.1, 0.1, -0.2, 0.0, 0.4, -0.1, 0.3, 0.6, -0.4, 0.0, 0.7, -0.2, 0.5, 0.3, 0.1, -0.3, 0.2]}"
+
+
